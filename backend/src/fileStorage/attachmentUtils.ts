@@ -14,19 +14,19 @@ export class AttachmentUtils {
         private readonly urlExpiration = process.env.SIGNED_URL_EXPIRATION) {
     }
 
-    async getUploadUrl(todoId: string): Promise<string> {
-        logger.info(`Get presigned URL url for TODO ${todoId} with bucket ${this.bucketName}`)
+    async getUploadUrl(postId: string): Promise<string> {
+        logger.info(`Get presigned URL url for Post ${postId} with bucket ${this.bucketName}`)
         const url =this.s3.getSignedUrl('putObject', {
             Bucket: this.bucketName,
-            Key: todoId,
+            Key: postId,
             Expires: parseInt(this.urlExpiration)
         })
         return url;
     }
 
-    getAttachmentUrl(todoId: string): string {
-        logger.info(`Get attachment URL for TODO ${todoId} on bucket ${this.bucketName}`)
-        return `https://${this.bucketName}.s3.amazonaws.com/${todoId}`;
+    getAttachmentUrl(postId: string): string {
+        logger.info(`Get attachment URL for Post ${postId} on bucket ${this.bucketName}`)
+        return `https://${this.bucketName}.s3.amazonaws.com/${postId}`;
     }
 }
 

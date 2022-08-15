@@ -1,9 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "CreateTodo",
+    "title": "UpdatePost",
     "type": "object",
     "properties": {
-      "name": {
+      "title": {
         "type": "string",
         "minLength": 1,
         "maxLength": 500
@@ -13,7 +13,7 @@
       }
     },
     "required": [
-      "name",
+      "title",
       "dueDate"
     ],
     "additionalProperties": false
